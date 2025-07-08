@@ -35,6 +35,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="/style/login.css">
 </head>
 <body>
+
+    <div class="form-container">
+    <h2>login</h2>
+
+    <?php if (!empty($error)): ?>
+        <div class="error-message">
+            <?php echo $error; ?>
+        </div>
+    <?php endif; ?>
+
+        <form method="POST" action="">
+        <label for="name"> Nama pengguna : </label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="password"> kata sandi :</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">
+            login bro
+         </button>
+         <p>belum punya akun ?<a href="register.php">belum punya akun? daftar dulu</a>
+         </p>
+        </form>
+
+    </div>
     
 </body>
 </html>
