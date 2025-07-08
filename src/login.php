@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once 'conn.php';
 
@@ -23,23 +23,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
+    <title>Login Pengguna</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="/style/logins.css">
 </head>
 <body>
 
-    <div class="form-container">
-    <h2>login</h2>
+<div class="form-container">
+    <h2>Login</h2>
 
- <?php if (!empty($error)): ?>
+    <?php if (!empty($error)): ?>
         <div class="message error"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
 
@@ -53,8 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit">Login bro</button>
         <p>Belum punya akun? <a href="register.php">Daftar di sini</a></p>
     </form>
+</div>
 
-    </div>
-    
 </body>
 </html>

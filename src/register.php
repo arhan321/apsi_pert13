@@ -28,41 +28,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
+    <title>Registrasi Pengguna</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="/style/register.css">
 </head>
 <body>
 
 <div class="form-container">
-    <h2>form register</h2>
+    <h2>Form Registrasi</h2>
 
     <?php if (!empty($error)): ?>
-        <div class="error-message">
-            <?php echo $error; ?>
-        </div>
+        <div class="message error"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
+
     <?php if (!empty($success)): ?>
-        <div class="success-message">
-            <?php echo $success; ?>
-        </div>
+        <div class="message success"><?= htmlspecialchars($success) ?></div>
     <?php endif; ?>
 
     <form method="POST" action="">
-        <label for="name">Nama pengguna:</label>
+        <label for="name">Nama Pengguna:</label>
         <input type="text" id="name" name="name" required>
 
-        <label for="password">Kata sandi:</label>
+        <label for="password">Kata Sandi:</label>
         <input type="password" id="password" name="password" required>
 
         <button type="submit">Daftar</button>
-        <p>Sudah punya akun? <a href="login.php">Login di sini</a></p>
+        <p>Sudah punya akun? <a href="login.php">Masuk di sini</a></p>
     </form>
-
 </div>
-    
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once 'conn.php';
 
@@ -8,27 +8,26 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $stmt = $pdo->prepare("
-SELECT blog.*, login.name AS penulis 
-FROM blog 
-JOIN 
-login ON blog.user_id = login.id 
-ORDER BY blog.created_at DSC
+    SELECT blog.*, login.name AS penulis 
+    FROM blog 
+    JOIN login ON blog.user_id = login.id 
+    ORDER BY blog.created_at DESC
 ");
 $stmt->execute();
 $blogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
+    <title>Beranda Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <link rel="stylesheet" href="/style/indexs.css">
+    <link rel="stylesheet" href="/style/indexs.css">
 </head>
 <body>
-    <div class="header">
+
+<div class="header">
     <span>Halo, <?= htmlspecialchars($_SESSION['user_name']) ?> 👋</span>
     <a class="logout" href="logout.php">Logout</a>
     <h2>Daftar Artikel Blog</h2>
@@ -46,6 +45,6 @@ $blogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php else: ?>
     <p>Tidak ada postingan blog untuk saat ini.</p>
 <?php endif; ?>
-    
+
 </body>
 </html>
