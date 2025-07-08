@@ -9,7 +9,7 @@ services:
       - ./src:/var/www/html
       - ./httpd.vhost.conf:/etc/apache2/sites-available/000-default.conf
     ports:
-      - 82:80
+      - 83:80
 
   db_apsi:
     image: mariadb:10.2
