@@ -3,23 +3,23 @@ session_start();
 require_once 'conn.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = trim($_POST['name']);
-    $password = trim($_POST['password']);
+    $name         = trim($_POST["name"]);
+    $raw_password = trim($_POST["password"]);
 
-    if(empty($name) || empty($raw_password)) {
-        $error = "nama dan password wajib di isi";
+    if (empty($name) || empty($raw_password)) {
+        $error = "Nama dan password harus diisi.";
     } else {
         $stmt = $pdo->prepare("SELECT * FROM login WHERE name = ?");
         $stmt->execute([$name]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        if ( $user && password_verify($raw_password, $user['password'])) {
+
+        if ($user && password_verify($raw_password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['name'] = $user['name'];
+            $_SESSION['user_name'] = $user['name'];
             header("Location: index.php");
-            exit();
+            exit;
         } else {
-            $error = "name atau password salah";
+            $error = "Nama atau password salah.";
         }
     }
 }
@@ -32,32 +32,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/style/login.css">
+    <link rel="stylesheet" href="/style/logins.css">
 </head>
 <body>
 
     <div class="form-container">
     <h2>login</h2>
 
-    <?php if (!empty($error)): ?>
-        <div class="error-message">
-            <?php echo $error; ?>
-        </div>
+ <?php if (!empty($error)): ?>
+        <div class="message error"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
 
-        <form method="POST" action="">
-        <label for="name"> Nama pengguna : </label>
+    <form method="POST" action="">
+        <label for="name">Nama Pengguna:</label>
         <input type="text" id="name" name="name" required>
 
-        <label for="password"> kata sandi :</label>
+        <label for="password">Kata Sandi:</label>
         <input type="password" id="password" name="password" required>
 
-        <button type="submit">
-            login bro
-         </button>
-         <p>belum punya akun ?<a href="register.php">belum punya akun? daftar dulu</a>
-         </p>
-        </form>
+        <button type="submit">Login bro</button>
+        <p>Belum punya akun? <a href="register.php">Daftar di sini</a></p>
+    </form>
 
     </div>
     
