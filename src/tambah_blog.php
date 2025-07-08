@@ -26,36 +26,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=s, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tambah Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/tambah_blogs.css">
 </head>
 <body>
 
 <div class="form-container">
-    <h2>
-        tambah postingan blog
-    </h2>
+    <h2>Tambah Postingan Blog</h2>
+
+    <?php if (!empty($error)): ?>
+        <div class="message error"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+
+    <form method="POST" action="">
+        <label for="judul">Judul:</label>
+        <input type="text" id="judul" name="judul" required>
+
+        <label for="deskripsi">Deskripsi:</label>
+        <textarea id="deskripsi" name="deskripsi" required></textarea>
+
+        <button type="submit">Simpan</button>
+    </form>
+
+    <a class="back-link" href="index.php">← Kembali ke Beranda</a>
 </div>
-<?php if (!empty($error)): ?>
-    <div class="message error"> <?= htmlspecialchars($error) ?> </div>
-<?php endif; ?>
 
-<form method="POST" action="">
-    <label for="judul"> judul:</label>
-    <input type="text" id="judul" required>
-
-    <label for="deskripsi"> deskripsi</label>
-    <textarea name="deskripsi" name="deskripsi"></textarea>
-
-    <button type="submit"> simpan</button>
-
-    <a class="back-link" href="index.php">kembali ke beranda</a>
-</form>
-    
 </body>
 </html>
