@@ -1,5 +1,5 @@
 <?php 
-$host = 'db';
+$host = 'db_apsi';
 $db_name = 'web_blog';
 $username = 'root';
 $password = '123';
