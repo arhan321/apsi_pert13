@@ -40,6 +40,24 @@ touch .env
 mkdir src
 ```
 
+```bash
+strktur folder : 
+# struktur folder dan penjelasan
+
+|-- db (folder server database)
+|    |-- data (folder engine database)
+|    |-- conf.d (folder untuk kebutuhan tune up SERVER DB (optional) )
+|    
+|-- .env (setingan container docker tersebut)
+|    
+|-- src (Folder Project PHP)
+|
+|-- dockerfile (pull registry kebutuhan php)
+|-- httpd.vhost.conf (seting webserver apache supaya tidak terjadi index of ketika sudah masuk PRODUCTION)
+|-- docker-compose.yml (memanggil service yang kita butuhkan berbasis container)
+
+```
+
 #### setelah itu pada folder pert13 silahkan ketikan
 ```bash
 docker compose up -d --build
@@ -154,7 +172,25 @@ setelah itu anda klik
 RUN 
 ```
 
-setelah itu anda silahkan coding php nya hingga selesai 
+#### setelah itu anda silahkan coding php nya hingga selesai 
+#### setelah itu anda silahkan ke browser dan ketikan 
+```bash
+http://localhost:83
+```
+#### dan jika pada setingan docker-compose.yml pada bagian webserver nya port nya pake 80 maka pakelah 80 jika di seting tidak 80 maka pakelah setingan anda : 
+```bash
+  apache-forground:
+    build: .
+    container_name: apache-forground
+    image: latest
+    volumes:
+      - ./src:/var/www/html
+      - ./httpd.vhost.conf:/etc/apache2/sites-available/000-default.conf
+    ports:
+      - 83:80
+```
+
+
 
 # HAPPY CODING !!!!
 
