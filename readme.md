@@ -42,8 +42,6 @@ mkdir src
 
 ```bash
 strktur folder : 
-# struktur folder dan penjelasan
-
 |-- db (folder server database)
 |    |-- data (folder engine database)
 |    |-- conf.d (folder untuk kebutuhan tune up SERVER DB (optional) )
