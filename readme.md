@@ -1,4 +1,4 @@
-# APSI CR002 PERT 13 MEMBUAT PROTOTYPE
+# APSI CR002 PERT 13 & 14 MEMBUAT PROTOTYPE
 ### Membuat Ui dan membuat system blog
 
 #### Bahasa yang diguunakan
